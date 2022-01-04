@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-// First Commit
+// First Commit in a specific branch
 function App() {
   return (
     <div className="App">
