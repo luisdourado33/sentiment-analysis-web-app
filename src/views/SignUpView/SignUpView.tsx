@@ -133,7 +133,7 @@ export default function SignUpView(props: {
             </InputGroup>
           </FormControl>
           <FormControl mt={5} flex="1">
-            <Button w="full" type="submit" colorScheme="purple">
+            <Button w="full" type="submit" colorScheme="blue">
               Criar nova conta
             </Button>
           </FormControl>
@@ -141,7 +141,7 @@ export default function SignUpView(props: {
             <Button
               w="full"
               type="button"
-              colorScheme="purple"
+              colorScheme="blue"
               variant="link"
               onClick={handleHasAccount}
             >

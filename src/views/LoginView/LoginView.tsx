@@ -30,7 +30,7 @@ export default function LoginView() {
 
   const handleChangeInput = (
     input: string,
-    event: React.ChangeEvent<HTMLInputElement>
+    event: any
   ): void => {
     setFormData((current) => ({ ...current, [input]: event.target.value }));
   };
@@ -61,6 +61,7 @@ export default function LoginView() {
             <Input
               id="email"
               type="email"
+              placeholder="Ex: john.doe@email.com"
               required
               value={formData.email}
               onChange={(e) => handleChangeInput("email", e)}
@@ -73,6 +74,7 @@ export default function LoginView() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 required
+                placeholder='********'
                 value={formData.password}
                 onChange={(e) => handleChangeInput("password", e)}
               />
@@ -84,12 +86,12 @@ export default function LoginView() {
             </InputGroup>
           </FormControl>
           <FormControl mt={5} flex="1">
-            <Button w="full" type="submit" colorScheme="blue" variant="outline">
+            <Button w="full" type="submit" colorScheme="blue" variant="solid">
               Entrar
             </Button>
           </FormControl>
           <FormControl
-            mt={5}
+            mt={2}
             flex="1"
             alignItems="center"
             justifyContent="center"
@@ -97,8 +99,7 @@ export default function LoginView() {
           >
             <Button
               type="button"
-              size="sm"
-              colorScheme="gray"
+              colorScheme="blue"
               variant="link"
               onClick={handleChangeIsSigningUp}
             >
