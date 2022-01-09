@@ -1,13 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import LoginView from '../src/views/LoginView/LoginView';
+import Routes from "./Routes";
 
 function App() {
   return (
     <div className="App">
-      <LoginView />
+      <Routes />
     </div>
   );
 }
