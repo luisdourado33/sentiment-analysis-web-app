@@ -10,7 +10,6 @@ import DashboardView from "./views/DashboardView/DashboardView";
 const Routes = () => {
   const { state } = useContext(AppContext);
 
-
   if (state.isLogged) {
     return (
       <BrowserRouter>

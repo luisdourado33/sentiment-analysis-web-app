@@ -15,17 +15,17 @@ import {
 
 import SignUpView from "../SignUpView/SignUpView";
 import { AppContext } from "../../context";
-interface LoginProps {
+export interface LoginProps {
   email: string;
   password: string;
 }
 
 export default function LoginView() {
-  const { signIn } = useContext(AppContext);
+  const { state, signIn } = useContext(AppContext);
 
   const [formData, setFormData] = useState<LoginProps>({
-    email: "",
-    password: "",
+    email: "luis_dourado33@email.com",
+    password: "123123123",
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
@@ -102,7 +102,9 @@ export default function LoginView() {
             </InputGroup>
           </FormControl>
           <FormControl mt={5} flex="1">
-            <Button w="full" type="submit" colorScheme="blue" variant="solid">
+            <Button w="full" type="submit" colorScheme="blue" variant="solid"
+            isLoading={state.isLoading}
+            >
               Entrar
             </Button>
           </FormControl>

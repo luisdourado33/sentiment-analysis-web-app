@@ -1,9 +1,21 @@
 import React from "react";
 
+import { Container } from "./dashboard-view.styles";
+
+import Navbar from "./../../components/Navbar/Navbar";
+import UserMetrics from "./../../components/UserMetrics/UserMetrics";
+import ClassificationBox from "../../components/ClassificationBox/ClassificationBox";
+import Footer from "../../components/Footer/Footer";
+
 export default function DashboardView() {
   return (
-    <div>
-      <h1>Dashboard View</h1>
-    </div>
+    <>
+      <Navbar />
+      <Container>
+        {/* <UserMetrics /> */}
+        <ClassificationBox />
+      </Container>
+      <Footer />
+    </>
   );
 }

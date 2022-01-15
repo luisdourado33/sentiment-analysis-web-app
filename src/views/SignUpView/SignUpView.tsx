@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 
 import { Container } from "./signup-view.styles";
 
@@ -15,8 +15,9 @@ import {
   Icon,
   Heading,
 } from "@chakra-ui/react";
+import { AppContext } from "../../context";
 
-interface IFormData {
+export interface IFormData {
   firstName: string;
   lastName: string;
   email: string;
@@ -27,6 +28,7 @@ interface IFormData {
 export default function SignUpView(props: {
   hasAccount?: (has: boolean) => void;
 }) {
+  const { signUp } = useContext(AppContext);
   const [formData, setFormData] = useState<IFormData>({
     firstName: "Luís",
     lastName: "Dourado",
@@ -50,6 +52,16 @@ export default function SignUpView(props: {
       ...prev,
       password: !(formData.password === formData.passwordRepeat),
     }));
+
+    let hasInvalidInput = false;
+
+    for (let entry in isInputInvalid) {
+      if (isInputInvalid[entry] === true) hasInvalidInput = true;
+    }
+
+    if (!hasInvalidInput) {
+      signUp(formData);
+    }
   };
 
   const handleChangeInput = (
