@@ -9,6 +9,7 @@ import {
   FormHelperText,
   InputGroup,
   InputRightElement,
+  FormErrorMessage,
   Input,
   Button,
   Icon,
@@ -27,13 +28,29 @@ export default function SignUpView(props: {
   hasAccount?: (has: boolean) => void;
 }) {
   const [formData, setFormData] = useState<IFormData>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    passwordRepeat: "",
+    firstName: "Luís",
+    lastName: "Dourado",
+    email: "luis_dourado33@hotmail.com",
+    password: "123123",
+    passwordRepeat: "1231233",
   });
+  const [isInputInvalid, setIsInputInvalid] = useState<any>({
+    firstName: false,
+    lastName: false,
+    email: false,
+    password: false,
+  });
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    setIsInputInvalid((prev: any) => ({
+      ...prev,
+      password: !(formData.password === formData.passwordRepeat),
+    }));
+  };
 
   const handleChangeInput = (
     input: string,
@@ -64,7 +81,7 @@ export default function SignUpView(props: {
         <Heading as="h1" size="lg" mb={10}>
           Criar uma nova conta
         </Heading>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FormControl mb={3}>
             <FormLabel htmlFor="firstName">Nome</FormLabel>
             <Input
@@ -98,7 +115,7 @@ export default function SignUpView(props: {
               Não compartilharemos seu e-mail com ninguém.
             </FormHelperText>
           </FormControl>
-          <FormControl mb={3}>
+          <FormControl mb={3} isInvalid={isInputInvalid.password}>
             <FormLabel htmlFor="password">Senha</FormLabel>
             <InputGroup>
               <Input
@@ -115,12 +132,13 @@ export default function SignUpView(props: {
               </InputRightElement>
             </InputGroup>
           </FormControl>
-          <FormControl mb={3}>
+          <FormControl mb={3} isInvalid={isInputInvalid.password}>
             <FormLabel htmlFor="passwordRepeat">Confirmar senha</FormLabel>
             <InputGroup>
               <Input
                 id="passwordRepeat"
                 type={showPassword ? "text" : "password"}
+                isInvalid={isInputInvalid.password}
                 required
                 value={formData.passwordRepeat}
                 onChange={(e) => handleChangeInput("passwordRepeat", e)}
@@ -131,6 +149,9 @@ export default function SignUpView(props: {
                 </Button>
               </InputRightElement>
             </InputGroup>
+            {isInputInvalid.password && (
+              <FormErrorMessage>As senhas não coincidem.</FormErrorMessage>
+            )}
           </FormControl>
           <FormControl mt={5} flex="1">
             <Button w="full" type="submit" colorScheme="blue">

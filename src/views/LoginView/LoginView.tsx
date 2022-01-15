@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 
 import { Container } from "./login-view.styles";
 import {
@@ -14,13 +14,15 @@ import {
 } from "@chakra-ui/react";
 
 import SignUpView from "../SignUpView/SignUpView";
-
+import { AppContext } from "../../context";
 interface LoginProps {
   email: string;
   password: string;
 }
 
 export default function LoginView() {
+  const { signIn } = useContext(AppContext);
+
   const [formData, setFormData] = useState<LoginProps>({
     email: "",
     password: "",
@@ -28,9 +30,15 @@ export default function LoginView() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
 
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+
+    signIn();
+  };
+
   const handleChangeInput = (
     input: string,
-    event: any
+    event: React.ChangeEvent<HTMLInputElement>
   ): void => {
     setFormData((current) => ({ ...current, [input]: event.target.value }));
   };
@@ -43,8 +51,16 @@ export default function LoginView() {
     setIsSigningUp((current) => !current);
   }, []);
 
-  const LoginBox = () => {
+  if (isSigningUp) {
     return (
+      <Container>
+        <SignUpView hasAccount={() => setIsSigningUp(false)} />
+      </Container>
+    );
+  }
+
+  return (
+    <Container>
       <Box
         bgColor="white"
         boxShadow="lg"
@@ -55,7 +71,7 @@ export default function LoginView() {
         <Heading size="lg" mb={5}>
           Acessar
         </Heading>
-        <form>
+        <form onSubmit={handleSubmit}>
           <FormControl mb={3}>
             <FormLabel htmlFor="email">E-mail</FormLabel>
             <Input
@@ -74,7 +90,7 @@ export default function LoginView() {
                 id="password"
                 type={showPassword ? "text" : "password"}
                 required
-                placeholder='********'
+                placeholder="********"
                 value={formData.password}
                 onChange={(e) => handleChangeInput("password", e)}
               />
@@ -108,20 +124,6 @@ export default function LoginView() {
           </FormControl>
         </form>
       </Box>
-    );
-  };
-
-  if (isSigningUp) {
-    return (
-      <Container>
-        <SignUpView hasAccount={() => setIsSigningUp(false)} />
-      </Container>
-    );
-  }
-
-  return (
-    <Container>
-      <LoginBox />
     </Container>
   );
 }
