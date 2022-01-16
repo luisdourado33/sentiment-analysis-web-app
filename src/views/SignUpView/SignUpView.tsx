@@ -28,13 +28,13 @@ export interface IFormData {
 export default function SignUpView(props: {
   hasAccount?: (has: boolean) => void;
 }) {
-  const { signUp } = useContext(AppContext);
+  const { state, signUp } = useContext(AppContext);
   const [formData, setFormData] = useState<IFormData>({
     firstName: "Luís",
     lastName: "Dourado",
     email: "luis_dourado33@hotmail.com",
-    password: "123123",
-    passwordRepeat: "1231233",
+    password: "123123123",
+    passwordRepeat: "123123123",
   });
   const [isInputInvalid, setIsInputInvalid] = useState<any>({
     firstName: false,
@@ -45,7 +45,7 @@ export default function SignUpView(props: {
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     setIsInputInvalid((prev: any) => ({
@@ -60,7 +60,8 @@ export default function SignUpView(props: {
     }
 
     if (!hasInvalidInput) {
-      signUp(formData);
+      let request = await signUp(formData);
+      console.log(request);
     }
   };
 
@@ -166,7 +167,7 @@ export default function SignUpView(props: {
             )}
           </FormControl>
           <FormControl mt={5} flex="1">
-            <Button w="full" type="submit" colorScheme="blue">
+            <Button w="full" type="submit" colorScheme="blue" isLoading={state.isLoading} disabled={state.isLoading}>
               Criar nova conta
             </Button>
           </FormControl>

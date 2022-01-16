@@ -4,4 +4,5 @@ export interface AppContextProps {
   firstName: string;
   lastName: string;
   email: string;
+  id?: number;
 }

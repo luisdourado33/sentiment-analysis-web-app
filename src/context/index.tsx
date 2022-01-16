@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import api from "../services/api";
 import { LoginProps } from "../views/LoginView/LoginView";
 import { IFormData } from "../views/SignUpView/SignUpView";
 import { AppContextProps } from "./types";
@@ -16,15 +17,52 @@ const INITIAL_VALUES: AppContextProps = {
 const AppProvider: React.FC = ({ children }) => {
   const [state, setState] = useState<AppContextProps>(INITIAL_VALUES);
 
-  const signIn = (formData: LoginProps) => {
+  const signIn = async (formData: LoginProps) => {
     // setar isLoading para true antes da requisicao api.
-    setState((prev) => ({ ...prev, isLogged: true }));
+    setState((prev) => ({ ...prev, isLoading: true }));
+
+    let request = await api.post("/login", formData);
+
+    if (request.data.status === 200) {
+      const { local_id, firstName, lastName, email } = request.data.user;
+      let user = { id: local_id, firstName, lastName, email };
+      console.log(user);
+      
+      setState((prev) => ({
+        ...prev,
+        ...user,
+        isLoading: false,
+        isLogged: true,
+      }));
+
+      return { status: 200, message: "Login realizado com sucesso" };
+    } else {
+      setState((prev) => ({ ...prev, isLoading: false }));
+      return { status: 400, message: "Houve um erro ao fazer login" };
+    }
   };
 
-  const signUp = (formData: IFormData) => {
-    // setar isLoading para true antes da requisicao api.
-    console.log(formData);
-    setState((prev) => ({ ...prev, isLogged: true }));
+  const signUp = async (formData: IFormData): Promise<any> => {
+    setState((prev) => ({ ...prev, isLoading: true }));
+
+    let request = await api.post("/signup", formData);
+
+    if (request.data.status === 200) {
+      const { local_id, firstName, lastName, email } = request.data.user;
+      let user = { id: local_id, firstName, lastName, email };
+      
+      setState((prev) => ({
+        ...prev,
+        ...user,
+        isLoading: false,
+        isLogged: true,
+      }));
+
+      return { status: 200, message: "Conta criada com sucesso" };
+    } else {
+      setState((prev) => ({ ...prev, isLoading: false }));
+      return { status: 400, message: "Houve um erro ao criar a conta" };
+    }
   };
 
   return (

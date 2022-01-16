@@ -13,8 +13,10 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-import SignUpView from "../SignUpView/SignUpView";
 import { AppContext } from "../../context";
+
+import SignUpView from "../SignUpView/SignUpView";
+
 export interface LoginProps {
   email: string;
   password: string;
@@ -33,7 +35,7 @@ export default function LoginView() {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    signIn();
+    signIn(formData);
   };
 
   const handleChangeInput = (
@@ -103,7 +105,7 @@ export default function LoginView() {
           </FormControl>
           <FormControl mt={5} flex="1">
             <Button w="full" type="submit" colorScheme="blue" variant="solid"
-            isLoading={state.isLoading}
+            isLoading={state.isLoading} disabled={state.isLoading}
             >
               Entrar
             </Button>
