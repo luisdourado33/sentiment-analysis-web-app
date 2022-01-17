@@ -104,8 +104,13 @@ export default function LoginView() {
             </InputGroup>
           </FormControl>
           <FormControl mt={5} flex="1">
-            <Button w="full" type="submit" colorScheme="blue" variant="solid"
-            isLoading={state.isLoading} disabled={state.isLoading}
+            <Button
+              w="full"
+              type="submit"
+              colorScheme="blue"
+              variant="solid"
+              isLoading={state.isLoading}
+              disabled={state.isLoading}
             >
               Entrar
             </Button>

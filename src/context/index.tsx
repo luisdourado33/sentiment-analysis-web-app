@@ -27,7 +27,7 @@ const AppProvider: React.FC = ({ children }) => {
       const { local_id, firstName, lastName, email } = request.data.user;
       let user = { id: local_id, firstName, lastName, email };
       console.log(user);
-      
+
       setState((prev) => ({
         ...prev,
         ...user,
@@ -50,7 +50,7 @@ const AppProvider: React.FC = ({ children }) => {
     if (request.data.status === 200) {
       const { local_id, firstName, lastName, email } = request.data.user;
       let user = { id: local_id, firstName, lastName, email };
-      
+
       setState((prev) => ({
         ...prev,
         ...user,

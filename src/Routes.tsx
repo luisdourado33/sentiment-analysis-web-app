@@ -14,22 +14,19 @@ const Routes = () => {
     return (
       <BrowserRouter>
         <RouteList>
-          <Route path='/' element={<DashboardView />} />
+          <Route path="/" element={<DashboardView />} />
         </RouteList>
       </BrowserRouter>
     );
   }
 
   return (
-      <BrowserRouter>
-        <RouteList>
-          <Route
-            path="/"
-            element={<LoginView />}
-          />
-          <Route path="/signup" element={<SignUpView />} />
-        </RouteList>
-      </BrowserRouter>
+    <BrowserRouter>
+      <RouteList>
+        <Route path="/" element={<LoginView />} />
+        <Route path="/signup" element={<SignUpView />} />
+      </RouteList>
+    </BrowserRouter>
   );
 };
 

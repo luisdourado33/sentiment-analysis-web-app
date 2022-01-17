@@ -167,7 +167,13 @@ export default function SignUpView(props: {
             )}
           </FormControl>
           <FormControl mt={5} flex="1">
-            <Button w="full" type="submit" colorScheme="blue" isLoading={state.isLoading} disabled={state.isLoading}>
+            <Button
+              w="full"
+              type="submit"
+              colorScheme="blue"
+              isLoading={state.isLoading}
+              disabled={state.isLoading}
+            >
               Criar nova conta
             </Button>
           </FormControl>
