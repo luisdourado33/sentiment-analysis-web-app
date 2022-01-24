@@ -14,6 +14,7 @@ import {
   Button,
   Icon,
   Heading,
+  Text
 } from "@chakra-ui/react";
 import { AppContext } from "../../context";
 
@@ -58,7 +59,7 @@ export default function SignUpView(props: {
     for (let entry in isInputInvalid) {
       if (isInputInvalid[entry] === true) hasInvalidInput = true;
     }
-
+    
     if (!hasInvalidInput) {
       let request = await signUp(formData);
       console.log(request);
@@ -91,9 +92,12 @@ export default function SignUpView(props: {
         h="fit-content"
         borderRadius={5}
       >
-        <Heading as="h1" size="lg" mb={10}>
-          Criar uma nova conta
+        <Heading mb={1} fontSize="lg" fontWeight="bold">
+          Criar conta
         </Heading>
+        <Text mb={5} fontSize="sm" textColor="gray.400" fontWeight="500">
+          Preencha os dados abaixo para criar uma nova conta
+        </Text>
         <form onSubmit={handleSubmit}>
           <FormControl mb={3}>
             <FormLabel htmlFor="firstName">Nome</FormLabel>

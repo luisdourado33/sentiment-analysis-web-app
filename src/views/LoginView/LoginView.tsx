@@ -11,6 +11,7 @@ import {
   Button,
   Icon,
   Heading,
+  Text,
 } from "@chakra-ui/react";
 
 import { AppContext } from "../../context";
@@ -22,20 +23,34 @@ export interface LoginProps {
   password: string;
 }
 
+interface ErrorProps {
+  isError: boolean;
+  message: string;
+}
+
 export default function LoginView() {
   const { state, signIn } = useContext(AppContext);
 
   const [formData, setFormData] = useState<LoginProps>({
-    email: "luis_dourado33@email.com",
+    email: "luis_dourado33@hotmail.com",
     password: "123123123",
   });
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [isSigningUp, setIsSigningUp] = useState<boolean>(false);
+  const [errorDetails, setErrorDetails] = useState<ErrorProps>({
+    isError: false,
+    message: "",
+  });
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
-    signIn(formData);
+    let request = await signIn(formData);
+
+    setErrorDetails({
+      isError: request.status === 400,
+      message: request.status === 400 ? request.message : "",
+    });
   };
 
   const handleChangeInput = (
@@ -63,6 +78,22 @@ export default function LoginView() {
 
   return (
     <Container>
+      {errorDetails.isError && (
+        <Box
+          p={15}
+          boxShadow="sm"
+          bgColor="white"
+          borderColor="red.100"
+          borderWidth="1px"
+          borderRadius={5}
+          mb={5}
+          w="300px"
+        >
+          <Text color="gray" textAlign="center">
+            {errorDetails.message}
+          </Text>
+        </Box>
+      )}
       <Box
         bgColor="white"
         boxShadow="lg"
@@ -70,9 +101,12 @@ export default function LoginView() {
         h="fit-content"
         borderRadius={5}
       >
-        <Heading size="lg" mb={5}>
+        <Heading mb={1} fontSize="lg" fontWeight="bold">
           Acessar
         </Heading>
+        <Text mb={5} fontSize="sm" textColor="gray.400" fontWeight="500">
+          Faça login na sua conta
+        </Text>
         <form onSubmit={handleSubmit}>
           <FormControl mb={3}>
             <FormLabel htmlFor="email">E-mail</FormLabel>

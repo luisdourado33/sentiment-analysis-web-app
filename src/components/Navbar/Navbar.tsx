@@ -9,7 +9,7 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, QuestionOutlineIcon, HamburgerIcon } from "@chakra-ui/icons";
 
 import { AppContext } from "../../context";
 
@@ -28,7 +28,9 @@ export default function Navbar() {
     >
       <Menu>
         <ItemMenu>
-          <Button variant="link">Início</Button>
+          <Button variant="link" leftIcon={<HamburgerIcon />}>
+            Início
+          </Button>
         </ItemMenu>
         <ItemMenu>
           <Button variant="link" leftIcon={<QuestionOutlineIcon />}>
