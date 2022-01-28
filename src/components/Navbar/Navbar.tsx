@@ -9,7 +9,11 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-import { ChevronDownIcon, QuestionOutlineIcon, HamburgerIcon } from "@chakra-ui/icons";
+import {
+  ChevronDownIcon,
+  QuestionOutlineIcon,
+  HamburgerIcon,
+} from "@chakra-ui/icons";
 
 import { AppContext } from "../../context";
 

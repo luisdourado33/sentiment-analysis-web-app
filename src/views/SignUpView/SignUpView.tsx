@@ -14,7 +14,7 @@ import {
   Button,
   Icon,
   Heading,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { AppContext } from "../../context";
 
@@ -59,7 +59,7 @@ export default function SignUpView(props: {
     for (let entry in isInputInvalid) {
       if (isInputInvalid[entry] === true) hasInvalidInput = true;
     }
-    
+
     if (!hasInvalidInput) {
       let request = await signUp(formData);
       console.log(request);
