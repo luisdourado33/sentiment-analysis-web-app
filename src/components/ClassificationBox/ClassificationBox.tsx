@@ -42,9 +42,29 @@ export default function ClassificationBox() {
   enum VoteOption {
     Negative = 0,
     Positive = 1,
-    Neutral = 3,
-    Pass = 4,
+    Neutral = 2,
+    Pass = 3,
   }
+
+  const pushVote = async (tweet: TweetProp, sentiment: VoteOption) => {
+    try {
+      const data = { 
+        id: tweet.id,
+        tweet_text: tweet.text,
+        sentiment
+      };
+
+      const request = await api.post("/tweepy/post_tweets/new", data);
+
+      if (request.status === 200) {
+        console.log({ ...request.data });
+      }
+
+      return;
+    } catch (error) {
+        console.error(error);
+    }
+  };
 
   const handleChangeCurrentTweet = (event: any, response: VoteOption) => {
     event.preventDefault();
@@ -54,6 +74,7 @@ export default function ClassificationBox() {
         /**
          * Save vote to database
          */
+        pushVote(current, response);
       }
 
       setCurrent(preTweets[amountVoted + 1]);
