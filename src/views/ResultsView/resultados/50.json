@@ -1,0 +1,82 @@
+[
+    {
+        "texto": "ol\u00e1 mundo",
+        "previsao": {
+            "NEGATIVO": 0.2872600853443146,
+            "POSITIVO": 0.08003304898738861,
+            "NEUTRO": 0.32590386271476746
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.57466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "odiar o lula",
+        "previsao": {
+            "NEGATIVO": 0.2634254992008209,
+            "POSITIVO": 0.07466042041778564,
+            "NEUTRO": 0.1465710997581482
+        }
+    },
+    {
+        "texto": "amar o bolsonaro",
+        "previsao": {
+            "NEGATIVO": 0.7883073687553406,
+            "POSITIVO": 0.19918489456176758,
+            "NEUTRO": 0.3052748739719391
+        }
+    }
+]

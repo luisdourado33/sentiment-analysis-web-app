@@ -6,6 +6,7 @@ import { AppContext } from "./context";
 import LoginView from "./views/LoginView/LoginView";
 import SignUpView from "./views/SignUpView/SignUpView";
 import DashboardView from "./views/DashboardView/DashboardView";
+import ResultsView from "./views/ResultsView/ResultsView";
 
 const Routes = () => {
   const { state } = useContext(AppContext);
@@ -25,6 +26,7 @@ const Routes = () => {
       <RouteList>
         <Route path="/" element={<LoginView />} />
         <Route path="/signup" element={<SignUpView />} />
+        <Route path="/results" element={<ResultsView />} />
       </RouteList>
     </BrowserRouter>
   );

@@ -11,4 +11,6 @@ export const ItemMenu = styled.li`
   padding: 5px;
   margin: 15px;
   text-align: center;
+  align-items: center;
+  display: flex;
 `;
